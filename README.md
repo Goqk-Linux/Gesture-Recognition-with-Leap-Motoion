@@ -1,36 +1,58 @@
-# Gesture-Recognition-with-Leap-Motoion
+# LeapMotion 手势识别系统
 
-## Project Overview
+## 项目概述
 
-This project is part of my individual project submitted at Newcastle University for the academic year 2023-2024. The primary goal of this project is to build a real-time gesture recognition system based on Leap Motion, utilizing a range of technologies for efficient and accurate gesture detection and recognition. Additionally, the system is deployed on a Raspberry Pi and includes functionality for uploading data to an IoT platform.
+本项目是我在纽卡斯尔大学 2023-2024 学年提交的个人项目，旨在开发一个基于 Leap Motion 的实时手势识别系统。项目的核心目标是构建一个基于机器学习的手势识别系统，系统可运行于 Raspberry Pi 5 上，并可上传数据至物联网平台以进行远程监控和分析。
 
-## Tech Stack
+## 个人角色
 
-The main technologies used in this project include:
+作为主程序员，我负责整个项目的算法开发、系统集成、以及在 Raspberry Pi 上的优化部署。
 
-- **C++**: Core programming language for performance-critical sections of the project.
-- **Python**: For rapid prototyping, data processing, and machine learning integration.
-- **Machine Learning**: Algorithms and models for gesture recognition.
+## 1. 实时识别系统
 
-Additional tools and frameworks:
+该部分主要实现了基于 Leap Motion 的手势识别系统，可通过 Raspberry Pi 进行实时的手势检测和响应，并集成了物联网上传功能。
 
-- **Computer Vision Libraries**: 
-  - **OpenCV**: For image processing and tracking hand gestures.
-- **Deep Learning Frameworks**: 
-  - **TensorFlow** or **PyTorch**: For training and deploying deep learning models.
-- **Data Management**: 
-  - **Pandas**: For managing and processing large datasets.
-  - **SQLite**: For lightweight, structured data storage.
-- **Signal Processing Tools**:
-  - **SciPy**: For signal filtering and noise reduction to enhance gesture signal accuracy.
-- **Real-Time Processing Frameworks**: 
-  - **ROS (Robot Operating System)**: To support real-time data handling from Leap Motion.
-- **Leap Motion SDK**: Essential for accessing and interpreting data streams from the Leap Motion sensor.
+### 技术栈
 
-### Raspberry Pi and IoT Integration
+- **实时数据处理**：
+  - **Leap Motion SDK**：用于从 Leap Motion 传感器接收并解析数据流。
+  - **OpenCV**：进行图像处理和手势跟踪，确保实时响应。
+  - **ROS（机器人操作系统）**：支持实时数据处理，确保手势识别系统的响应速度。
 
-- **Raspberry Pi**: The entire system is deployed on a Raspberry Pi, enabling local data recording, model training, and real-time predictions.
-- **IoT Platform Integration**: The system includes functionality for uploading data to an IoT platform for remote monitoring and analysis.
-- **Edge Computing**: Local model training and prediction on the Raspberry Pi allow for reduced latency and increased data privacy.
+- **边缘计算和物联网集成**：
+  - **Raspberry Pi**：部署平台，实现本地数据记录、模型训练和实时预测。
+  - **MQTT 协议**：用于实现物联网平台的通信。
+  - **GPIO 控制**：用于控制外部设备和传感器。
+  - **I2C 和 SPI 接口**：与肌电传感器和其他外部设备进行通信。
 
-These technologies collectively enable the development of a robust, responsive, and scalable gesture recognition system with IoT capabilities.
+- **信号预处理**：
+  - **SciPy**：用于信号过滤和降噪，以提高手势信号的精度。
+  - **数据归一化和标准化**：确保数据的一致性和模型输入的可靠性。
+
+## 2. 机器学习算法选择
+
+为了实现准确的手势识别系统，对多种机器学习算法进行了对比分析，最终选择最适合的算法并优化模型性能。
+
+### 技术栈
+
+- **算法框架**：
+  - **TensorFlow** 或 **PyTorch**：用于训练和部署深度学习模型，以实现手势识别的高准确率。
+  - **Pandas**：处理和管理训练数据集。
+
+- **模型选择与优化**：
+  - **模型对比与性能评估**：对不同的机器学习算法进行比较分析，确保模型平衡准确性与实时性。
+  - **模型微调**：根据项目需求优化模型参数。
+
+- **数据存储与管理**：
+  - **SQLite**：用于本地数据存储，以便于数据的调用与管理。
+  - **数据预处理与增强**：包括数据清洗、数据增强等，进一步提高模型的识别效果。
+
+## 关键挑战与解决方案
+
+- 实现实时手势识别：通过预处理和归一化提升了识别准确性，解决了模型精度与实时性之间的平衡。
+- 多算法选择和对比：通过对比分析选择了最佳算法，确保系统性能。
+- 物联网集成：在 Raspberry Pi 上实现 MQTT 协议，支持数据的物联网上传。
+
+---
+
+这些技术组合实现了一个功能强大、响应快速且具有物联网集成功能的手势识别系统，并兼顾了模型的实时性和准确性。
